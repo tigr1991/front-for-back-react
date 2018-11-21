@@ -13,8 +13,6 @@ export default class ClickCounter extends Component {
 
     handleClickClick = () => {
         let newValue = this.state.clicks + this.state.step;
-
-        console.log(newValue)
         this.setState({clicks: newValue})
     }
 
@@ -33,6 +31,7 @@ export default class ClickCounter extends Component {
     }
 
     render() {
+        const { maxValue, clicks, step } = this.state
         return (
             <div className="row justify-center p-t bg-tertiary section">
                 <div className="card standard-border card-narrow shadow">
@@ -41,26 +40,26 @@ export default class ClickCounter extends Component {
 
                         <div className="m-t">
                             <span className="info-key">Max Value:</span>
-                            <span className="text-accent">{this.state.maxValue}</span>
+                            <span className="text-accent">{maxValue}</span>
                         </div>
 
                         <div className="m-t">
                             <span className="info-key">clicks:</span>
-                            <span className="text-accent">{this.state.clicks}</span>
+                            <span className="text-accent">{clicks}</span>
                         </div>
 
                         <div className="m-t">
                             <span className="info-key">clicks left:</span>
-                            <span className="text-accent">{this.state.maxValue - this.state.clicks}</span>
+                            <span className="text-accent">{maxValue - clicks}</span>
                         </div>
 
                         <div className="m-t">
                             <span className="info-key">step:</span>
-                            <span className="text-accent">{this.state.step}</span>
+                            <span className="text-accent">{step}</span>
                         </div>
                     </div>
 
-                    <Btn onClick={this.handleClickClick} className="m-t d-block" disabled={this.state.clicks >= this.state.maxValue}>Click</Btn>
+                    <Btn onClick={this.handleClickClick} className="m-t d-block" disabled={clicks >= maxValue}>Click</Btn>
                     <Btn onClick={this.handleResetClick} className="m-t d-block">Reset</Btn>
                     <Btn onClick={this.handleIncreaseStepClick} className="m-t d-block">Increase Step</Btn>
                     <Btn onClick={this.handleIncreaseMaxClick} className="m-t d-block">Increase Max</Btn>
